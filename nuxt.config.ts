@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt/config'
+import { defineNuxtConfig } from 'nuxt/config';
 
 // https://v3.nuxtjs.org/guide/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -10,19 +10,19 @@ export default defineNuxtConfig({
     FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
     FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
   },
-  nitro: {
-    preset: "vercel",
-  },
-  css: ["@/assets/css/tailwind.css"],
-  // 参考:https://std9.jp/articles/01fq14pxsp4r6nbyzp2txj46ac
-  build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
+  app: {
+    head: {
+      script: [
+        {
+          rel: 'stylesheet',
+          href: 'https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css',
         },
-      },
+      ],
     },
   },
+  nitro: {
+    preset: 'vercel',
+  },
+  css: ['@/assets/css/tailwind.css'],
+  // 参考:https://std9.jp/articles/01fq14pxsp4r6nbyzp2txj46ac
 });
